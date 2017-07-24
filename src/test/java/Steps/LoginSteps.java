@@ -1,0 +1,65 @@
+package Steps;
+
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LoginSteps {
+    @Given("^I navigate to the login page$")
+    public void iNavigateToTheLoginPage() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("Navigate to login page");
+    }
+
+    /*@And("^I enter the username as soumya and password as nopass$")
+    public void iEnterTheUsernameAsSoumyaAndPasswordAsNopass() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+       System.out.println("Credential Given");
+    }*/
+
+    @And("^I click on the login button$")
+    public void iClickOnTheLoginButton() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("Authentication Completed");
+    }
+
+    @Then("^I should see the userform page$")
+    public void iShouldSeeTheUserformPage() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("Successfully logged in");
+    }
+
+    @And("^I enter credentials$")
+    public void iEnterCredentials(DataTable table) throws Throwable {
+        /*List<List<String>> data =table.raw();
+        *//*System.out.println("The username is: " + data.get(1).get(0).toString());
+        System.out.println("The password is: " + data.get(1*//*).get(1).toString());*/
+
+        List<User> users = new ArrayList<User>();
+        users = table.asList(User.class);
+
+        for (User user : users) {
+            System.out.println("Username is: "+ user.username + " and password is: " + user.password);
+        }
+    }
+
+        public class User {
+            public String username;
+            public String password;
+
+            public User(String userName, String passWord) {
+                username = userName;
+                password = passWord;
+            }
+        }
+    }
+    /*@And("^I enter the username as \"([^\"]*)\" and password as \"([^\"]*)\"$")
+    public void iEnterTheUsernameAsAndPasswordAs(String username, String password) throws Throwable {
+       System.out.println("Username is: " + username + " and " + "password is: " + password);
+    }*/
+
