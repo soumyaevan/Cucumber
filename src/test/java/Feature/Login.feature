@@ -9,3 +9,14 @@ Feature: LoginFeature
       | abcd     | nopassword |
     And I click on the login button
     Then I should see the userform page
+
+  Scenario Outline: Login with correct username and password using example
+    Given I navigate to the login page
+    And I enter <username> and <password>
+    And I click on the login button
+    Then I should see the userform page
+    Examples:
+      | username | password   |
+      | soumya   | nopass     |
+      | abcd     | nopassword |
+      | pranoy   | das        |

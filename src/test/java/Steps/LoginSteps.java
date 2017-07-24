@@ -14,7 +14,6 @@ public class LoginSteps {
     public void iNavigateToTheLoginPage() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("Navigate to login page");
-        System.out.println();
     }
 
     /*@And("^I enter the username as soumya and password as nopass$")
@@ -43,6 +42,12 @@ public class LoginSteps {
         for (User user : users) {
             System.out.println("Username is: "+ user.username + " and password is: " + user.password);
         }
+    }
+
+    @And("^I enter ([^\\\"]*) and ([^\\\"]*)$")
+    public void iEnterUsernameAndPassword(String username, String password) throws Throwable {
+
+        System.out.println("Username is: " + username + " and Password is: " + password);
     }
 
 
