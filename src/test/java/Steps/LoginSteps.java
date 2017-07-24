@@ -14,6 +14,7 @@ public class LoginSteps {
     public void iNavigateToTheLoginPage() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("Navigate to login page");
+        System.out.println();
     }
 
     /*@And("^I enter the username as soumya and password as nopass$")
@@ -36,10 +37,6 @@ public class LoginSteps {
 
     @And("^I enter credentials$")
     public void iEnterCredentials(DataTable table) throws Throwable {
-        /*List<List<String>> data =table.raw();
-        *//*System.out.println("The username is: " + data.get(1).get(0).toString());
-        System.out.println("The password is: " + data.get(1*//*).get(1).toString());*/
-
         List<User> users = new ArrayList<User>();
         users = table.asList(User.class);
 
@@ -48,7 +45,8 @@ public class LoginSteps {
         }
     }
 
-        public class User {
+
+    public class User {
             public String username;
             public String password;
 
