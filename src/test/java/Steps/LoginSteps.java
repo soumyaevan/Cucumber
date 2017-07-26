@@ -1,5 +1,6 @@
 package Steps;
 
+import Depenedenct.BaseUtil;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
@@ -10,6 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginSteps {
+
+    private BaseUtil base;
+
+    public LoginSteps(BaseUtil base) {
+        this.base = base;
+    }
+
     @Given("^I navigate to the login page$")
     public void iNavigateToTheLoginPage() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
@@ -26,6 +34,7 @@ public class LoginSteps {
     public void iClickOnTheLoginButton() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("Authentication Completed");
+        System.out.println(base.stepInfo);
     }
 
     @Then("^I should see the userform page$")
