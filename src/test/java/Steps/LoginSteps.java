@@ -1,8 +1,11 @@
 package Steps;
 
 import Depenedenct.BaseUtil;
+import Tranformer.EmailTransformer;
+import Tranformer.StringToInt;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
+import cucumber.api.Transform;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -53,10 +56,21 @@ public class LoginSteps {
         }
     }
 
-    @And("^I enter ([^\\\"]*) and ([^\\\"]*)$")
+    @And("^I enter ([^\"]*) and ([^\"]*)$")
     public void iEnterUsernameAndPassword(String username, String password) throws Throwable {
 
         System.out.println("Username is: " + username + " and Password is: " + password);
+    }
+
+    @And("^I enter the user's email:([^\"]*)$")
+    public void iEnterTheUserSEmailAdmin(@Transform(EmailTransformer.class) String email) throws Throwable {
+        System.out.println("The email address is: " + email);
+    }
+
+    @And("^The number of digit in salary:(\\d+)$")
+    public void theNumberOfDigitInSalary(@Transform(StringToInt.class) int salary) throws Throwable {
+
+        System.out.println("Total digit: " + salary);
     }
 
 
