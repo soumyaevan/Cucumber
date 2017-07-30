@@ -5,6 +5,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class Hook extends BaseUtil {
 
@@ -17,6 +18,8 @@ public class Hook extends BaseUtil {
     public void initializeTest(){
         System.out.println("Opening the browser");
        System.setProperty("webdriver.gecko.driver","D:\\Software\\geckodriver-v0.15.0\\geckodriver.exe");
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability("marionette",true);
         base.driver = new FirefoxDriver();
     }
 

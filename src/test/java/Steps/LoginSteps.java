@@ -9,6 +9,9 @@ import cucumber.api.Transform;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+
 import java.lang.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,7 @@ public class LoginSteps extends BaseUtil {
         // Write code here that turns the phrase above into concrete actions
         base.driver.navigate().to("http://www.executeautomation.com/demosite/Login.html");
         System.out.println("Navigate to login page");
+        Thread.sleep(6000);
     }
 
     /*@And("^I enter the username as soumya and password as nopass$")
@@ -36,13 +40,14 @@ public class LoginSteps extends BaseUtil {
 
     @And("^I click on the login button$")
     public void iClickOnTheLoginButton() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("Authentication Completed");
+        base.driver.findElement(By.name("Login")).submit();
+        System.out.println("Login button clicked");
     }
 
     @Then("^I should see the userform page$")
     public void iShouldSeeTheUserformPage() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        Assert.assertTrue("page is not displayed",base.driver.findElement(By.name("Initial")).isDisplayed());
         System.out.println("Successfully logged in");
     }
 
@@ -52,7 +57,9 @@ public class LoginSteps extends BaseUtil {
         users = table.asList(User.class);
 
         for (User user : users) {
-            System.out.println("Username is: "+ user.username + " and password is: " + user.password);
+           // System.out.println("Username is: "+ user.username + " and password is: " + user.password);
+            base.driver.findElement(By.name("UserName")).sendKeys(user.username);
+            base.driver.findElement(By.name("Password")).sendKeys(user.password);
         }
     }
 
