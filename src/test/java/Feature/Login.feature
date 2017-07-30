@@ -8,3 +8,11 @@ Feature: LoginFeature
       | soumya   | nopass     |
     And I click on the login button
     Then I should see the userform page
+
+  Scenario: Login with correct username and password Fail
+    Given I navigate to the login page
+    And I enter credentials
+      | username | password   |
+      | soumya   | nopass     |
+    And I click on the login button
+    Then I should see the userform page wrongly

@@ -86,6 +86,11 @@ public class LoginSteps extends BaseUtil {
         System.out.println("Total digit: " + salary);
     }
 
+    @Then("^I should see the userform page wrongly$")
+    public void iShouldSeeTheUserformPageWrongly() throws Throwable {
+        Assert.assertTrue("page is not displayed",base.driver.findElement(By.name("vhjjvjv")).isDisplayed());
+    }
+
 
     public class User {
             public String username;
