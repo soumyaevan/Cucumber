@@ -1,6 +1,7 @@
 package Steps;
 
 import Depenedenct.BaseUtil;
+import Pages.loginPage;
 import Tranformer.EmailTransformer;
 import Tranformer.StringToInt;
 import cucumber.api.DataTable;
@@ -40,7 +41,9 @@ public class LoginSteps extends BaseUtil {
 
     @And("^I click on the login button$")
     public void iClickOnTheLoginButton() throws Throwable {
-        base.driver.findElement(By.name("Login")).submit();
+       // base.driver.findElement(By.name("Login")).submit();
+        loginPage page = new loginPage(base.driver);
+        page.loginBtnSubmit();
         System.out.println("Login button clicked");
         Thread.sleep(6000);
     }
@@ -56,11 +59,12 @@ public class LoginSteps extends BaseUtil {
     public void iEnterCredentials(DataTable table) throws Throwable {
         List<User> users = new ArrayList<User>();
         users = table.asList(User.class);
-
+        loginPage page = new loginPage(base.driver);
         for (User user : users) {
            // System.out.println("Username is: "+ user.username + " and password is: " + user.password);
-            base.driver.findElement(By.name("UserName")).sendKeys(user.username);
-            base.driver.findElement(By.name("Password")).sendKeys(user.password);
+            /*base.driver.findElement(By.name("UserName")).sendKeys(user.username);
+            base.driver.findElement(By.name("Password")).sendKeys(user.password);*/
+            page.loginCedential(user.username,user.password);
             Thread.sleep(3000);
         }
     }
