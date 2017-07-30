@@ -29,7 +29,7 @@ public class LoginSteps extends BaseUtil {
         // Write code here that turns the phrase above into concrete actions
         base.driver.navigate().to("http://www.executeautomation.com/demosite/Login.html");
         System.out.println("Navigate to login page");
-        Thread.sleep(6000);
+        Thread.sleep(3000);
     }
 
     /*@And("^I enter the username as soumya and password as nopass$")
@@ -42,6 +42,7 @@ public class LoginSteps extends BaseUtil {
     public void iClickOnTheLoginButton() throws Throwable {
         base.driver.findElement(By.name("Login")).submit();
         System.out.println("Login button clicked");
+        Thread.sleep(6000);
     }
 
     @Then("^I should see the userform page$")
@@ -60,6 +61,7 @@ public class LoginSteps extends BaseUtil {
            // System.out.println("Username is: "+ user.username + " and password is: " + user.password);
             base.driver.findElement(By.name("UserName")).sendKeys(user.username);
             base.driver.findElement(By.name("Password")).sendKeys(user.password);
+            Thread.sleep(3000);
         }
     }
 
