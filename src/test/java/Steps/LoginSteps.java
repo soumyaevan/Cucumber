@@ -13,7 +13,7 @@ import java.lang.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginSteps {
+public class LoginSteps extends BaseUtil {
 
     private BaseUtil base;
 
@@ -24,6 +24,7 @@ public class LoginSteps {
     @Given("^I navigate to the login page$")
     public void iNavigateToTheLoginPage() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        base.driver.navigate().to("http://www.executeautomation.com/demosite/Login.html");
         System.out.println("Navigate to login page");
     }
 
@@ -37,7 +38,6 @@ public class LoginSteps {
     public void iClickOnTheLoginButton() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         System.out.println("Authentication Completed");
-        System.out.println(base.stepInfo);
     }
 
     @Then("^I should see the userform page$")

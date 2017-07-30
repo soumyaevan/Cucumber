@@ -10,7 +10,6 @@ Feature: LoginFeature
       | abcd     | nopassword |
     And I click on the login button
     And The number of digit in salary:21000
-    And I want to see the step in cucumber java-8
     Then I should see the userform page
 
   Scenario Outline: Login with correct username and password using example
