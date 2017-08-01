@@ -1,5 +1,6 @@
 package Steps;
 
+import ConfigProperty.PropertyReader;
 import Depenedenct.BaseUtil;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -17,10 +18,7 @@ public class Hook extends BaseUtil {
     @Before
     public void initializeTest(){
         System.out.println("Opening the browser");
-       System.setProperty("webdriver.gecko.driver","D:\\Downloads\\geckodriver-v0.16.0-win64\\geckodriver.exe");
-        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability("marionette",true);
-        base.driver = new FirefoxDriver();
+        selectBrowser();
     }
 
     @After
@@ -34,6 +32,17 @@ public class Hook extends BaseUtil {
             System.out.println(scenario.getName() + " Scenario is passed");
             base.driver.close();
             base.driver.quit();
+        }
+    }
+
+    public void selectBrowser(){
+        String browser = new PropertyReader().readProperty("browser");
+        System.out.println(browser);
+        if (browser.equalsIgnoreCase("firefox")){
+            System.setProperty("webdriver.gecko.driver","D:\\Downloads\\geckodriver-v0.16.0-win64\\geckodriver.exe");
+            DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+            capabilities.setCapability("marionette",true);
+            base.driver = new FirefoxDriver();
         }
     }
 }
